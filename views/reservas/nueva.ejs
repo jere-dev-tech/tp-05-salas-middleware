@@ -1,0 +1,59 @@
+<section class="seccion-formulario">
+  <header class="encabezado-seccion">
+    <div>
+      <p class="etiqueta"><%= seccion %></p>
+      <h1><%= titulo %></h1>
+    </div>
+  </header>
+
+  <% if (error) { %>
+    <p class="mensaje-error" role="alert"><%= error %></p>
+  <% } %>
+
+  <form class="formulario" action="/reservas" method="post">
+    <div class="campo">
+      <label for="estudiante">Estudiante</label>
+      <input id="estudiante" name="estudiante" type="text" value="<%= valores.estudiante ?? "" %>" required>
+    </div>
+
+    <div class="campo">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" value="<%= valores.email ?? "" %>" required>
+    </div>
+
+    <div class="campo">
+      <label for="sala">Sala</label>
+      <select id="sala" name="sala" required>
+        <option value="">Seleccioná una sala</option>
+        <% salasPermitidas.forEach((sala) => { %>
+          <option value="<%= sala %>" <%= valores.sala === sala ? "selected" : "" %>><%= sala %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="fecha">Fecha</label>
+      <input id="fecha" name="fecha" type="date" value="<%= valores.fecha ?? "" %>" required>
+    </div>
+
+    <div class="campo">
+      <label for="turno">Turno</label>
+      <select id="turno" name="turno" required>
+        <option value="">Seleccioná un turno</option>
+        <% ["Mañana", "Tarde", "Noche"].forEach((turno) => { %>
+          <option value="<%= turno %>" <%= valores.turno === turno ? "selected" : "" %>><%= turno %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="personas">Cantidad de personas</label>
+      <input id="personas" name="personas" type="number" min="1" max="6" step="1" value="<%= valores.personas ?? "" %>" required>
+    </div>
+
+    <div class="acciones-formulario">
+      <button class="boton" type="submit">Guardar reserva</button>
+      <a class="boton boton-secundario" href="/reservas">Cancelar</a>
+    </div>
+  </form>
+</section>

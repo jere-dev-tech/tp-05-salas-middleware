@@ -1,0 +1,37 @@
+<article class="detalle-reserva">
+  <p class="etiqueta">Detalle de la reserva</p>
+  <h1><%= titulo %></h1>
+
+  <dl class="lista-detalle">
+    <div>
+      <dt>ID</dt>
+      <dd><%= reserva.id %></dd>
+    </div>
+    <div>
+      <dt>Estudiante</dt>
+      <dd><%= reserva.estudiante %></dd>
+    </div>
+    <div>
+      <dt>Email</dt>
+      <dd><%= reserva.email %></dd>
+    </div>
+    <div>
+      <dt>Sala</dt>
+      <dd><%= reserva.sala %></dd>
+    </div>
+    <div>
+      <dt>Fecha</dt>
+      <dd><time datetime="<%= reserva.fecha %>"><%= reserva.fecha %></time></dd>
+    </div>
+    <div>
+      <dt>Turno</dt>
+      <dd><%= reserva.turno %></dd>
+    </div>
+    <div>
+      <dt>Personas</dt>
+      <dd><%= reserva.personas %></dd>
+    </div>
+  </dl>
+
+  <a class="boton boton-secundario" href="/reservas">Volver al listado</a>
+</article>

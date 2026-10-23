@@ -1,0 +1,44 @@
+<section>
+  <header class="encabezado-seccion">
+    <div>
+      <p class="etiqueta"><%= seccion %></p>
+      <h1><%= titulo %></h1>
+    </div>
+    <a class="boton" href="/reservas/nueva">Nueva reserva</a>
+  </header>
+
+  <% if (reservas.length > 0) { %>
+    <div class="grilla-reservas">
+      <% reservas.forEach((reserva) => { %>
+        <article class="tarjeta">
+          <h2><%= reserva.estudiante %></h2>
+          <dl class="datos-reserva">
+            <div>
+              <dt>Sala</dt>
+              <dd><%= reserva.sala %></dd>
+            </div>
+            <div>
+              <dt>Fecha</dt>
+              <dd><time datetime="<%= reserva.fecha %>"><%= reserva.fecha %></time></dd>
+            </div>
+            <div>
+              <dt>Turno</dt>
+              <dd><%= reserva.turno %></dd>
+            </div>
+            <div>
+              <dt>Personas</dt>
+              <dd><%= reserva.personas %></dd>
+            </div>
+          </dl>
+          <a class="enlace-detalle" href="/reservas/<%= reserva.id %>">Ver detalle</a>
+        </article>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <div class="estado-vacio">
+      <h2>Todavía no hay reservas</h2>
+      <p>Creá la primera reserva para comenzar a organizar las salas de estudio.</p>
+      <a class="boton" href="/reservas/nueva">Crear una reserva</a>
+    </div>
+  <% } %>
+</section>
